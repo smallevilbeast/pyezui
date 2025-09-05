@@ -1,21 +1,6 @@
 # EzUI Python绑定依赖
 
 # 核心依赖
-pybind11>=2.6.0
-
-# 构建依赖
-setuptools>=45
+pybind11
+setuptools
 wheel
-cmake>=3.12
-
-# 开发依赖 (可选)
-pytest>=6.0
-pytest-cov
-black
-flake8
-mypy
-
-# 文档依赖 (可选)
-sphinx
-sphinx-rtd-theme
-myst-parser
