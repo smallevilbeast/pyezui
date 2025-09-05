@@ -1,0 +1,118 @@
+[build-system]
+requires = [
+    "setuptools>=45",
+    "wheel",
+    "pybind11>=2.6.0",
+    "cmake>=3.12",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ezui"
+version = "0.1.0"
+description = "Python bindings for EzUI - A lightweight Windows GUI framework"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "EzUI Team", email = "support@ezui.com"},
+]
+maintainers = [
+    {name = "EzUI Team", email = "support@ezui.com"},
+]
+keywords = ["gui", "ui", "windows", "direct2d", "native"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: User Interfaces",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "pybind11>=2.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov",
+    "sphinx",
+    "sphinx-rtd-theme",
+    "black",
+    "flake8",
+    "mypy",
+]
+test = [
+    "pytest>=6.0",
+    "pytest-cov",
+]
+docs = [
+    "sphinx",
+    "sphinx-rtd-theme",
+    "myst-parser",
+]
+
+[project.urls]
+Homepage = "https://github.com/ezui/ezui-python"
+Documentation = "https://docs.ezui.com/python"
+Repository = "https://github.com/ezui/ezui-python"
+"Bug Tracker" = "https://github.com/ezui/ezui-python/issues"
+Changelog = "https://github.com/ezui/ezui-python/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ezui*"]
+
+[tool.setuptools.package-data]
+ezui = ["py.typed"]
+
+[tool.black]
+line-length = 88
+target-version = ["py37", "py38", "py39", "py310", "py311", "py312"]
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=ezui",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "ezui.*"
+ignore_missing_imports = true

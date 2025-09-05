@@ -1,0 +1,3 @@
+[submodule "EzUI"]
+	path = EzUI
+	url = https://github.com/NewYoungCode/EzUI.git
