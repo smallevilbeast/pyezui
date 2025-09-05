@@ -46,6 +46,24 @@ pip install .
 pip install -e .
 ```
 
+#### 方法二：创建wheel包
+
+```bash
+# 创建源码分发包和wheel包
+python setup.py sdist bdist_wheel
+
+# 仅创建wheel包
+python setup.py bdist_wheel
+
+# 安装生成的wheel包
+pip install dist/ezui-*.whl
+```
+
+生成的包文件位于 `dist/` 目录：
+- `*.tar.gz`: 源码分发包
+- `*.whl`: wheel二进制包
+
+**注意**: wheel包包含已编译的二进制文件，可以直接安装无需编译，但仅适用于相同的Python版本和平台。
 
 ### 4. 验证安装
 
